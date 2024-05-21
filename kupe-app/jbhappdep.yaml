@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jbhinfoapp
+  labels:
+    app: jbhinfoapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jbhinfoapp
+  template:
+    metadata:
+      labels:
+        app: jbhinfoapp
+    spec:
+      containers:
+      - name: jbinfoapp
+        image: jjansenhansen/jbhinfo-app:V1
+        resources:
+          limits:
+            memory: "Mi"
+            cpu: "500m"
+        ports:
+        - name: jbhinfoapp-port
+          containerPort: 8080

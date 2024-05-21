@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: ./Docker-Files/web
+    container_name: jbhinfoweb
+    ports:
+     - "80:80"
+
+  app:
+    build:
+      context: ./Docker-Files/app
+    container_name: jbhinfoapp
+    ports:
+      - "8080:8080"
+    volumes:
+      - jbhappdata:/usr/local/tomcat/webapps
+
+volumes:
+  jbhappdata: {}
